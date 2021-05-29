@@ -1,0 +1,9 @@
+<view>
+    <view class="tabs">
+        <view class="tab-item"
+            wx:for="{{['全部服务', '在提供', '正在找']}}"
+        ></view>
+    </view>
+    <view class="category"></view>
+    <view class="tab-panel"></view>
+</view>
