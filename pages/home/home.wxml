@@ -1,8 +1,17 @@
-<view>
+<view class="container">
     <view class="tabs">
-        <view class="tab-item"
-            wx:for="{{['全部服务', '在提供', '正在找']}}"
-        ></view>
+        <view
+            class="tab-item"
+            wx:for="{{tabs}}"
+            wx:key="index"
+            bind:tap="handleTabChange"
+            data-index="{{index}}"
+        >
+            <view class="tab-item-content {{currentTabIndex === index ? 'active-tab' : ''}}">
+                {{item}}
+            </view>
+            <view class="divider" wx:if="{{currentTabIndex === index}}"></view>
+        </view>
     </view>
     <view class="category"></view>
     <view class="tab-panel"></view>
