@@ -1,38 +1,30 @@
+@import "./home.skeleton.wxss";
+
 .container {
-    display: flex;
-    flex-direction: column;
+    /*display: flex;*/
+    /*flex-direction: column;*/
     height: 100%;
 }
 
-.tabs {
-    display: flex;
-    padding: 30rpx 0;
-    background-color: #fff;
-    align-items: center;
-    height: 126rpx;
-    box-sizing: border-box;
+.category {
+    padding: 30rpx 0 30rpx 30rpx;
+    background-color: #ffffff;
 }
 
-.tab-item {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.category-swiper-item {
+    border-radius: 20rpx;
+    width: 300rpx;
+    height: 150rpx;
+    background-image: linear-gradient(to right, #e68d44, #eb6d59);
 }
 
-.tab-item-content {
-    color: #888888;
-    white-space: nowrap;
+.category-name {
+    position: absolute;
+    top: 20rpx;
+    left: 20rpx;
+    color: #fff;
 }
 
-.tab-item-content.active-tab {
-    color: #333333;
-    font-weight: bold;
-}
-
-.divider {
-    height: 6rpx;
-    width: 50rpx;
-    margin-top: 10rpx;
-    background-color: #f3d066;
+.service-preview {
+    margin-bottom: 30rpx;
 }

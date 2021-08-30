@@ -1,0 +1,38 @@
+page {
+    background-color: #fff;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.user-info {
+    margin-top: 40%;
+}
+
+.avatar {
+    width: 200rpx;
+    height: 200rpx;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.nickname {
+    margin-top: 30rpx;
+    text-align: center;
+}
+
+.button-area {
+    margin-top: 60rpx;
+}
+
+.login-button {
+    background-color: #f3d066;
+}
+
+.back-home-button {
+    margin-top: 30rpx;
+}

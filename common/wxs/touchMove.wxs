@@ -1,0 +1,34 @@
+
+var touchStartX;
+
+function handleTouchstart(e) {
+  console.log('start')
+  touchStartX = e.changedTouches[0].clientX;
+}
+
+function handleTouchend(e, ownerInstance) {
+  console.log('end')
+  var touchEndX = e.changedTouches[0].clientX;
+  var distance = touchEndX - touchStartX;
+  var direction = 0;
+
+  // 手指向左划
+  if (distance < 0 && distance <= -70) {
+    direction = 1;
+  }
+
+  // 手指向右划
+  if (distance > 0 && distance >= 70) {
+    direction = -1;
+  }
+
+  if (direction !== 0) {
+    console.log('callMethod')
+    ownerInstance.callMethod('handleTouchMove', {direction: direction});
+  }
+}
+
+module.exports = {
+  handleTouchstart: handleTouchstart,
+  handleTouchend: handleTouchend
+}

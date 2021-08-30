@@ -3,13 +3,17 @@
     "pages/home/home",
     "pages/message/message",
     "pages/my/my",
-    "pages/publish/publish"
+    "pages/publish/publish",
+    "components/service-preview/service-preview",
+    "pages/service-detail/service-detail",
+    "pages/login/login"
   ],
   "window": {
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
-    "navigationBarTextStyle": "black"
+    "navigationBarTitleText": "家政服务",
+    "navigationBarTextStyle": "black",
+    "backgroundColorBottom": "#efefef"
   },
   "tabBar": {
     "borderStyle": "white",
@@ -43,5 +47,15 @@
     ]
   },
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "i-icon": "/components/icon/icon",
+    "i-tabs": "/components/tabs/tabs",
+    "i-service-preview": "/components/service-preview/service-preview",
+    "i-show-status": "/components/show-status/show-status",
+    "i-avatar": "/components/avatar/avatar",
+    "i-rating": "/components/rating/rating",
+    "i-service-rating": "/components/service-rating/service-rating",
+    "i-safe-area": "/components/safe-area/safe-area"
+  }
 }

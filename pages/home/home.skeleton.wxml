@@ -1,0 +1,246 @@
+<!--
+此文件为开发者工具生成，生成时间: 2021/7/17 下午2:02:19
+使用方法：
+在 C:\Users\CJ\WeChatProjects\HomeEcon\pages\home\home.wxml 引入模板
+
+```
+<import src="home.skeleton.wxml"/>
+<template is="skeleton" wx-if="{{loading}}" />
+```
+
+在 C:\Users\CJ\WeChatProjects\HomeEcon\pages\home\home.wxss 中引入样式
+```
+@import "./home.skeleton.wxss";
+```
+
+更多详细信息可以参考文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/skeleton.html
+-->
+<template name="skeleton">
+  <view class="sk-container">
+    <view class="container">
+      <view is="components/tabs/tabs">
+        <view class="tabs--container">
+          <view class="tabs--tabs">
+            <view class="tabs--tab-item" data-index="0">
+              <view class="tabs--tab-item-content tabs--active-tab sk-transparent sk-text-14-2857-137 sk-text">
+                全部服务
+              </view>
+              <view class="tabs--divider"></view>
+            </view>
+            <view class="tabs--tab-item" data-index="1">
+              <view class="tabs--tab-item-content sk-transparent sk-text-14-2857-470 sk-text">
+                在提供
+              </view>
+            </view>
+            <view class="tabs--tab-item" data-index="2">
+              <view class="tabs--tab-item-content sk-transparent sk-text-14-2857-460 sk-text">
+                正在找
+              </view>
+            </view>
+          </view>
+          <view>
+            <view class="category">
+              <image style="width: 80%; height: 75px;" class="sk-image"></image>
+            </view>
+          </view>
+          <view class="tabs--tab-panel">
+            <view>
+              <view>
+                <view is="components/service-preview/service-preview">
+                  <view class="preview--container">
+                    <view class="preview--left">
+                      <view class="preview--type-tag sk-transparent sk-text-14-2857-810 sk-text">
+                        在提供
+                      </view>
+                      <image class="preview--cover-image sk-image" mode="aspectFill"></image>
+                    </view>
+                    <view class="preview--right">
+                      <view class="preview--row">
+                        <view class="preview--service-title sk-transparent sk-text-14-2857-705 sk-text">
+                          霞心家政服务
+                        </view>
+                        <view class="preview--category">
+                          <view is="components/icon/icon">
+                            <view class="icon--iconfont icon--icon-biaoqian sk-pseudo sk-pseudo-circle" style="font-size: 17px;color: #f27013;"></view>
+                          </view>
+                          <view class="preview--category-text sk-transparent sk-text-14-2857-423 sk-text">
+                            保洁
+                          </view>
+                        </view>
+                      </view>
+                      <view class="preview--row"></view>
+                      <view class="preview--publisher">
+                        <view class="preview--publisher-avatar">
+                          <image class="preview--publisher-avatar-image sk-image"></image>
+                        </view>
+                        <view class="preview--publisher-nickname sk-transparent sk-text-14-2857-492 sk-text">
+                          Roger ,,,
+                        </view>
+                        <view class="preview--score sk-transparent sk-text-14-2857-112 sk-text">★0</view>
+                      </view>
+                      <view class="preview--row">
+                        <view class="preview--create-time sk-transparent sk-text-14-2857-483 sk-text">
+                          2021-07-04 00:18:00
+                        </view>
+                      </view>
+                      <view class="preview--row preview--row-last">
+                        <view class="preview--price sk-transparent">
+                          <text class="preview--label sk-transparent sk-opacity">￥</text>2000.00
+                        </view>
+                        <view class="preview--sales sk-transparent sk-text-14-2857-349 sk-text">
+                          已售 0
+                        </view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+              <view>
+                <view is="components/service-preview/service-preview">
+                  <view class="preview--container">
+                    <view class="preview--left">
+                      <view class="preview--type-tag sk-transparent sk-text-14-2857-448 sk-text">
+                        在提供
+                      </view>
+                      <image class="preview--cover-image sk-image" mode="aspectFill"></image>
+                    </view>
+                    <view class="preview--right">
+                      <view class="preview--row">
+                        <view class="preview--service-title sk-transparent sk-text-14-2857-279 sk-text">
+                          天秀创意粉刷
+                        </view>
+                        <view class="preview--category">
+                          <view is="components/icon/icon">
+                            <view class="icon--iconfont icon--icon-biaoqian sk-pseudo sk-pseudo-circle" style="font-size: 17px;color: #f27013;"></view>
+                          </view>
+                          <view class="preview--category-text sk-transparent sk-text-14-2857-184 sk-text">
+                            装修
+                          </view>
+                        </view>
+                      </view>
+                      <view class="preview--row"></view>
+                      <view class="preview--publisher">
+                        <view class="preview--publisher-avatar">
+                          <image class="preview--publisher-avatar-image sk-image"></image>
+                        </view>
+                        <view class="preview--publisher-nickname sk-transparent sk-text-14-2857-145 sk-text">
+                          沁塵🙄
+                        </view>
+                        <view class="preview--score sk-transparent sk-text-14-2857-254 sk-text">★0</view>
+                      </view>
+                      <view class="preview--row">
+                        <view class="preview--create-time sk-transparent sk-text-14-2857-898 sk-text">
+                          2021-07-02 21:05:08
+                        </view>
+                      </view>
+                      <view class="preview--row preview--row-last">
+                        <view class="preview--price sk-transparent">
+                          <text class="preview--label sk-transparent sk-opacity">￥</text>5000.00
+                        </view>
+                        <view class="preview--sales sk-transparent sk-text-14-2857-254 sk-text">
+                          已售 0
+                        </view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+              <view>
+                <view is="components/service-preview/service-preview">
+                  <view class="preview--container">
+                    <view class="preview--left">
+                      <view class="preview--type-tag sk-transparent sk-text-14-2857-811 sk-text">
+                        正在找
+                      </view>
+                      <image class="preview--cover-image sk-image" mode="aspectFill"></image>
+                    </view>
+                    <view class="preview--right">
+                      <view class="preview--row">
+                        <view class="preview--service-title sk-transparent sk-text-14-2857-879 sk-text">
+                          北京路附近寻保姆三名
+                        </view>
+                        <view class="preview--category">
+                          <view is="components/icon/icon">
+                            <view class="icon--iconfont icon--icon-biaoqian sk-pseudo sk-pseudo-circle" style="font-size: 17px;color: #f27013;"></view>
+                          </view>
+                          <view class="preview--category-text sk-transparent sk-text-14-2857-130 sk-text">
+                            护理
+                          </view>
+                        </view>
+                      </view>
+                      <view class="preview--row"></view>
+                      <view class="preview--publisher">
+                        <view class="preview--publisher-avatar">
+                          <image class="preview--publisher-avatar-image sk-image"></image>
+                        </view>
+                        <view class="preview--publisher-nickname sk-transparent sk-text-14-2857-390 sk-text">
+                          沁塵
+                        </view>
+                        <view class="preview--score sk-transparent sk-text-14-2857-186 sk-text">★0</view>
+                      </view>
+                      <view class="preview--row">
+                        <view class="preview--create-time sk-transparent sk-text-14-2857-454 sk-text">
+                          2021-04-29 20:01:00
+                        </view>
+                      </view>
+                      <view class="preview--row preview--row-last">
+                        <view class="preview--price sk-transparent">
+                          <text class="preview--label sk-transparent sk-opacity">￥</text>4399.00
+                        </view>
+                        <view class="preview--sales sk-transparent sk-text-14-2857-953 sk-text">
+                          已售 0
+                        </view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+              <view>
+                <view is="components/service-preview/service-preview">
+                  <view class="preview--container">
+                    <view class="preview--left">
+                      <view class="preview--type-tag sk-transparent sk-text-14-2857-286 sk-text">
+                        在提供
+                      </view>
+                      <image class="preview--cover-image sk-image" mode="aspectFill"></image>
+                    </view>
+                    <view class="preview--right">
+                      <view class="preview--row">
+                        <view class="preview--service-title sk-transparent sk-text-14-2857-995 sk-text">
+                          汽车维护保养套餐
+                        </view>
+                        <view class="preview--category">
+                          <view is="components/icon/icon">
+                            <view class="icon--iconfont icon--icon-biaoqian sk-pseudo sk-pseudo-circle" style="font-size: 17px;color: #f27013;"></view>
+                          </view>
+                          <view class="preview--category-text sk-transparent sk-text-14-2857-314 sk-text">
+                            汽修
+                          </view>
+                        </view>
+                      </view>
+                      <view class="preview--row"></view>
+                      <view class="preview--publisher">
+                        <view class="preview--publisher-avatar">
+                          <image class="preview--publisher-avatar-image sk-image"></image>
+                        </view>
+                        <view class="preview--publisher-nickname sk-transparent sk-text-14-2857-528 sk-text">
+                          沁塵
+                        </view>
+                        <view class="preview--score sk-transparent sk-text-14-2857-41 sk-text">★5</view>
+                      </view>
+                      <view class="preview--row">
+                        <view class="preview--create-time sk-transparent sk-text-14-2857-107 sk-text">
+                          2021-04-29 19:40:42
+                        </view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
