@@ -1,6 +1,6 @@
 import Service from '../../model/service'
 import User from '../../model/user'
-import Rating from '../../model/raing'
+import Rating from '../../model/rating'
 import serviceType from '../../enum/service-type'
 import serviceStatus from '../../enum/service-status'
 import {getEventParam} from '../../utils/utils'
