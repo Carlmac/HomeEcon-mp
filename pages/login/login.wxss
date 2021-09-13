@@ -14,8 +14,8 @@ page {
 }
 
 .avatar {
-    width: 200rpx;
-    height: 200rpx;
+    width: 220rpx;
+    height: 220rpx;
     border-radius: 50%;
     overflow: hidden;
 }

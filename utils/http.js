@@ -4,16 +4,23 @@ import wxToPromise from './wx'
 import cache from '../enum/cache'
 
 export default class Http {
-  static async request({ url, data, method = 'GET' }) {
+  static async request({url, data, method = 'GET', refetch = true}) {
 
-    const res = await wxToPromise('request',{
-      url: APIConfig.baseUrl + url,
-      data,
-      method,
-      header: {
-        token: wx.getStorageSync(cache.TOKEN)
-      }
-    });
+    let res;
+
+    try {
+      res = await wxToPromise('request', {
+        url: APIConfig.baseUrl + url,
+        data,
+        method,
+        header: {
+          token: wx.getStorageSync(cache.TOKEN)
+        }
+      });
+    } catch (e) {
+      Http._showError(-1)
+      throw new Error(e.errMsg)
+    }
 
     // 全局统一响应、异常处理
     // todo 请求成功
@@ -24,7 +31,15 @@ export default class Http {
     // todo 请求失败
     if (res.statusCode === 401) {
       // todo 令牌相关操作
-      return
+      if (res.data.error_code === 10001) {
+        wx.navigateTo({
+          url: `pages/login/login`
+        })
+        throw Error('请求未携带令牌');
+      }
+      if (refetch) {
+        return await Http._refetch({url, data, method, refetch})
+      }
     }
 
     Http._showError(res.data.error_code, res.data.message);
@@ -33,6 +48,12 @@ export default class Http {
 
     throw Error(error);
 
+  }
+
+  static async _refetch(data) {
+    await User.login()
+    data.refetch = false;
+    return await Http.request(data)
   }
 
   static _showError(errorCode, message) {

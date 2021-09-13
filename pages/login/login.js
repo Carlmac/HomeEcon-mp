@@ -21,7 +21,9 @@ Page({
       wx.navigateBack();
     } catch (e) {
       wx.showModal({
-        title: '登录失败，请稍后重试'
+        title: '注意',
+        content: '登录失败，请稍后重试',
+        showCancel: false
       });
       console.log(e);
     }
