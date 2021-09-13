@@ -29,9 +29,7 @@ export default class Http {
 
     Http._showError(res.data.error_code, res.data.message);
 
-    const error = typeof res.data.message === 'object'
-      ? Object.value(res.data.message).join(';')
-      : res.data.message;
+    const error = this._generateMessage(res.data.message);
 
     throw Error(error);
 
@@ -42,14 +40,18 @@ export default class Http {
     const errorMsg = exceptionMessage[errorCode];
     title = errorMsg || message || '未知异常';
 
-    title = typeof title === 'object'
-      ? Object.value(title).join(';')
-      : title;
+    title = this._generateMessage(title);
 
     wx.showToast({
       title,
       icon: 'none',
       duration: 3000
     })
+  }
+
+  static _generateMessage(message) {
+    return typeof message === 'object'
+      ? Object.value(message).join(';')
+      : message;
   }
 }

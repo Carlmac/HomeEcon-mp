@@ -12,11 +12,20 @@ Page({
 
     });
     wx.showLoading({
-      title: '正在授权'
+      title: '正在授权',
+      mask: true
     });
-    await User.login();
-    await User.updateUserInfo(res.userInfo);
+    try {
+      await User.login();
+      await User.updateUserInfo(res.userInfo);
+      wx.navigateBack();
+    } catch (e) {
+      wx.showModal({
+        title: '登录失败，请稍后重试'
+      });
+      console.log(e);
+    }
+
     wx.hideLoading();
-    wx.navigateBack();
   }
 });
