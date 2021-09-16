@@ -5,6 +5,7 @@ import serviceType from '../../enum/service-type'
 import serviceStatus from '../../enum/service-status'
 import {getEventParam} from '../../utils/utils'
 import serviceAction from '../../enum/service-action'
+import cache from '../../enum/cache'
 
 const rating = new Rating();
 
@@ -50,13 +51,34 @@ Page({
     await this._getService();
   },
   handleEditService() {
-    console.log(2)
+    const service = JSON.stringify(this.data.service)
+    wx.navigateTo({
+      url: `/pages/service-edit/service-edit?service=${service}`
+    })
   },
   handleChat() {
-    console.log(3)
+    const targetUserId = this.data.service.publisher.id;
+    const service = JSON.stringify(this.data.service)
+    wx.navigateTo({
+      url: `/pages/conversation/conversation?targetUserId=${targetUserId}&service=${service}`
+    })
   },
   handleOrder() {
-    console.log(4)
+    if (!wx.getStorageSync(cache.TOKEN)) {
+      wx.navigateTo({
+        url: `/pages/login/login`,
+        event: {
+          login: ()=>{
+            this._checkRole()
+          }
+        }
+      })
+      return;
+    }
+    const service = JSON.stringify(this.data.service)
+    wx.navigateTo({
+      url: `/pages/order/order?service=${service}`
+    })
   },
   _generateModalContent(action) {
     let content = '';

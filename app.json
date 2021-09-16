@@ -6,7 +6,10 @@
     "pages/publish/publish",
     "components/service-preview/service-preview",
     "pages/service-detail/service-detail",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/service-edit/service-edit",
+    "pages/conversation/conversation",
+    "pages/order/order"
   ],
   "window": {
     "backgroundTextStyle": "dark",
