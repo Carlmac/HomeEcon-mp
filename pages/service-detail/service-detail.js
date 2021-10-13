@@ -16,21 +16,28 @@ Page({
     isPublisher: false,
     ratingList: [],
     serviceTypeEnum: serviceType,
-    serviceStatusEnum: serviceStatus
+    serviceStatusEnum: serviceStatus,
+    loading: true
   },
   onLoad: async function (options) {
     this.data.serviceId = options.service_id;
     await this._getService();
     await this._getServiceRatingList();
     this._checkRole();
+    this.setData({
+      loading: false
+    })
   },
   async _getService() {
     const service = await Service.getServiceById(this.data.serviceId);
     this.setData({
       service
-    })
+    });
   },
   async _getServiceRatingList() {
+    if (this.data.service.type === serviceType.SEEK) {
+      return
+    }
     const ratingList = await rating.reset().getServiceRatingList(this.data.serviceId);
     this.setData({
       ratingList
@@ -68,7 +75,7 @@ Page({
       wx.navigateTo({
         url: `/pages/login/login`,
         event: {
-          login: ()=>{
+          login: () => {
             this._checkRole()
           }
         }
@@ -106,5 +113,14 @@ Page({
         isPublisher: true
       })
     }
+  },
+  async onReachBottom() {
+    if (!rating.hasMoreData) {
+      return
+    }
+    const ratingList = await rating.getServiceRatingList(this.data.serviceId);
+    this.setData({
+      ratingList
+    });
   }
 });

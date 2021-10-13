@@ -1,3 +1,5 @@
+@import "./service-detail.skeleton.wxss";
+
 .container {
     font-size: 28rpx;
     box-sizing: border-box;
@@ -6,7 +8,7 @@
 }
 
 .service-container{
-    padding-bottom: 300rpx;
+    padding-bottom: 250rpx;
 }
 
 .service-info {
