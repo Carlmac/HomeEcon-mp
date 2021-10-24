@@ -1,6 +1,6 @@
 <mp-form>
     <mp-cell title="发布类型">
-        <picker range="{{typeList}}" range-key="name" bindchange="handlePickerChange">
+        <picker range="{{typeList}}" range-key="name" bindchange="handleTypeChange">
             <view wx:if="{{typePickerIndex !== null}}">
                 {{typeList[typePickerIndex].name}}
             </view>
