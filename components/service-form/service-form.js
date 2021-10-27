@@ -1,5 +1,6 @@
 import serviceType from '../../enum/service-type'
-import {getEventParam} from '../../utils/utils'
+import {getDataSet, getEventParam} from '../../utils/utils'
+import Category from '../../model/category'
 
 Component({
   properties: {
@@ -17,6 +18,8 @@ Component({
       }
     ],
     typePickerIndex: null,
+    categoryList: [],
+    categoryPickerIndex: null,
     formData: {
       type: null,
       title: '',
@@ -35,10 +38,14 @@ Component({
     }
   },
   methods: {
-    _init() {
-      const index = this.data.typeList.findIndex((type) => this.form.type === type.id);
+    async _init() {
+      const typePickerIndex = this.data.typeList.findIndex((type) => this.data.form.type === type.id);
+      const categoryList = await Category.getCategoryList()
+      const categoryPickerIndex = categoryList.findIndex((item) => this.data.form.category_id === item.id)
       this.setData({
-        typePickerIndex: index !== -1 ? index : null,
+        categoryList,
+        categoryPickerIndex: categoryPickerIndex !== -1 ? categoryPickerIndex : null,
+        typePickerIndex: typePickerIndex !== -1 ? typePickerIndex : null,
         formData: {
           type: this.data.form.type,
           title: this.data.form.tytpe,
@@ -53,11 +60,51 @@ Component({
       })
     },
 
+    submit() {
+      console.log(this.data.formData)
+    },
+
     handleTypeChange(event) {
       const index = getEventParam(event, 'value')
       this.setData({
         typePickerIndex: index,
         ['formData.type']: this.data.typeList[index].index
+      })
+    },
+
+    handleInput(event) {
+      const value = getEventParam(event, 'value')
+      const field = getDataSet(event, 'field')
+      this.setData({
+        [`formData.${field}`]: value
+      })
+    },
+
+    handleCategoryChange(event) {
+      const index = getEventParam(event, 'value')
+      this.setData({
+        categoryPickerIndex: index,
+        [`formData.category_id`]: this.data.categoryList[index].id
+      })
+    },
+
+    handleSwitchChange(event) {
+      const res = getEventParam(event, 'value')
+      this.setData({
+        [`formData.designated_place`]: res
+      })
+    },
+
+    handleBeginDateChange(event) {
+      const beginDate = getEventParam(event, 'value')
+      this.setData({
+        [`formData.begin_date`]: beginDate
+      })
+    },
+    handleEndDateChange(event) {
+      const endDate = getEventParam(event, 'value')
+      this.setData({
+        [`formData.end_date`]: endDate
       })
     }
   }
