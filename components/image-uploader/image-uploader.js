@@ -76,7 +76,45 @@ Component({
       this.triggerEvent('delete', {index, item: deleted[0]})
     },
 
-    handleChooseImage(event) {
+    async handleChooseImage(event) {
+      const res = await wx.chooseImage({
+        count: this.data.maxCount,
+        sizeType: this.data.sizeType,
+        sourceType: this.data.sourceType
+      })
+
+      this.triggerEvent('choose', {files: res.tempFiles})
+      const _files = this._filesFilter(res.tempFiles);
+      this.setData({
+        _files
+      })
+
+      const uploadTask = _files.filter(item => item.status === this.data.uploadStatusEnum.UPLOADING);
+      this._executeUpload(uploadTask);
+    },
+
+    _filesFilter(tempFiles) {
+      const res = [];
+      tempFiles.forEach((item, index) => {
+        let error = '';
+        if (item.size > (this.data.size * 1024 * 1024)) {
+          error = `图片大小不能超过${this.data.size}M`;
+          this.triggerEvent('validatefail', {item, error})
+        }
+        const length = this.data._files.length;
+        res.push({
+          id: null,
+          key: index + length + '',
+          path: item.path,
+          status: error ? this.data.uploadStatusEnum.ERROR : this.data.uploadStatusEnum.UPLOADING,
+          error
+        })
+
+      })
+      return this.data._files.concat(res);
+    },
+
+    _executeUpload(uploadTask) {
 
     }
   }
