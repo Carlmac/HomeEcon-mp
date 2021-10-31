@@ -1,4 +1,5 @@
 import {getDataSet} from '../../utils/utils'
+import FileUploader from '../../utils/file-uploader'
 
 Component({
   properties: {
@@ -90,7 +91,7 @@ Component({
       })
 
       const uploadTask = _files.filter(item => item.status === this.data.uploadStatusEnum.UPLOADING);
-      this._executeUpload(uploadTask);
+      await this._executeUpload(uploadTask);
     },
 
     _filesFilter(tempFiles) {
@@ -114,8 +115,28 @@ Component({
       return this.data._files.concat(res);
     },
 
-    _executeUpload(uploadTask) {
+    async _executeUpload(uploadTask) {
+      const success = [];
+      for (const file of uploadTask) {
+        try {
+          const res = await FileUploader.upload(file.path, file.key);
+          file.id = res[0].id;
+          file.status = this.data.uploadStatusEnum.SUCCESS;
+          this.data._files[file.key] = file;
+          success.push(file);
+        } catch (e) {
+          file.status = this.data.uploadStatusEnum.ERROR;
+          file.error = e;
+          this.triggerEvent('uploadfail', {file, error: e})
+        }
+      }
+      this.setData({
+        _files: this.data._files
+      })
 
+      if (success.length) {
+        this.triggerEvent('uploadsuccess', {files: success})
+      }
     }
   }
 });
