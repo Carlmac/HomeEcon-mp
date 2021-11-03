@@ -38,3 +38,13 @@
     color: #fff;
     font-size: 20rpx;
 }
+
+.choose-image {
+    width: 160rpx;
+    height: 160rpx;
+    background-color: #efefef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20rpx;
+}

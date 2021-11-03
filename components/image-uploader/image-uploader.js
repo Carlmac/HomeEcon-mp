@@ -52,6 +52,7 @@ Component({
     }
   },
   data: {
+    _files: [],
     uploadStatusEnum: {
       ERROR: 0,
       UPLOADING: 1,

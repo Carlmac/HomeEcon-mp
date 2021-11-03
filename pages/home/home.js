@@ -23,7 +23,7 @@ Page({
   async _getServiceList() {
     // 获取服务列表数据
     const serviceList = await service.reset().getServiceList(this.data.categoryId, this.data.tabIndex);
-    console.log(serviceList);
+    // console.log(serviceList);
     this.setData({
       serviceList
     });

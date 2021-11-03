@@ -20,6 +20,7 @@ Component({
     typePickerIndex: null,
     categoryList: [],
     categoryPickerIndex: null,
+    files: [],
     formData: {
       type: null,
       title: '',
@@ -46,11 +47,12 @@ Component({
         categoryList,
         categoryPickerIndex: categoryPickerIndex !== -1 ? categoryPickerIndex : null,
         typePickerIndex: typePickerIndex !== -1 ? typePickerIndex : null,
+        files: this.data.form.cover_image ? [this.data.form.cover_image] : [],
         formData: {
           type: this.data.form.type,
-          title: this.data.form.tytpe,
+          title: this.data.form.title,
           category_id: this.data.form.category_id,
-          cover_image_id: this.data.form.cover_image_id,
+          cover_image_id: this.data.form.cover_image ? this.data.form.cover_image.id : null,
           description: this.data.form.description,
           designated_place: this.data.form.designated_place,
           begin_date: this.data.form.begin_date,
@@ -68,7 +70,7 @@ Component({
       const index = getEventParam(event, 'value')
       this.setData({
         typePickerIndex: index,
-        ['formData.type']: this.data.typeList[index].index
+        ['formData.type']: this.data.typeList[index].id
       })
     },
 
@@ -105,6 +107,14 @@ Component({
       const endDate = getEventParam(event, 'value')
       this.setData({
         [`formData.end_date`]: endDate
+      })
+    },
+
+    handleUploadSuccess(event) {
+      console.log(event)
+      const id = event.detail.files[0].id
+      this.setData({
+        ['formData.cover_image_id']: id
       })
     }
   }

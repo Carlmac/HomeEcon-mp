@@ -12,6 +12,6 @@
         </view>
     </view>
     <view class="choose-image" wx:if="{{_files.length < maxCount}}" bind:tap="handleChooseImage">
-        <i-icon name="add" size="60"></i-icon>
+        <i-icon name="add" size="60" color="#333333"></i-icon>
     </view>
 </view>
