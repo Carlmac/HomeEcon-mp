@@ -6,6 +6,14 @@ Component({
   properties: {
     form: Object
   },
+  observers: {
+    form: function (newValue) {
+      if (!newValue) {
+        return
+      }
+      this._init();
+    }
+  },
   data: {
     typeList: [
       {
@@ -33,11 +41,11 @@ Component({
       price: ''
     }
   },
-  lifetimes: {
-    attached() {
-      this._init()
-    }
-  },
+  // lifetimes: {
+  //   attached() {
+  //     this._init()
+  //   }
+  // },
   methods: {
     async _init() {
       const typePickerIndex = this.data.typeList.findIndex((type) => this.data.form.type === type.id);
@@ -63,7 +71,7 @@ Component({
     },
 
     submit() {
-      console.log(this.data.formData)
+      this.triggerEvent('submit', {formData: this.data.formData})
     },
 
     handleTypeChange(event) {
