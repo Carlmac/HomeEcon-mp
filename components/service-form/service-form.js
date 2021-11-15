@@ -7,14 +7,14 @@ Component({
   properties: {
     form: Object
   },
-  observers: {
-    form: function (newValue) {
-      if (!newValue) {
-        return
-      }
-      this._init();
-    }
-  },
+  // observers: {
+  //   form: function (newValue) {
+  //     if (!newValue) {
+  //       return
+  //     }
+  //     this._init();
+  //   }
+  // },
   data: {
     typeList: [
       {
@@ -108,19 +108,41 @@ Component({
         ],
       },
     ],
-    error: null
+    error: null,
+    showForm: false,
+    resetForm: true
   },
   // lifetimes: {
   //   attached() {
   //     this._init()
   //   }
   // },
+  pageLifetimes: {
+    show() {
+      if (this.data.resetForm) {
+        this._init()
+      }
+
+      this.setData({
+        resetForm: true
+      })
+    },
+    hide() {
+      if (this.data.resetForm) {
+        this.setData({
+          showForm: false
+        })
+      }
+    }
+  },
   methods: {
     async _init() {
       const typePickerIndex = this.data.typeList.findIndex((type) => this.data.form.type === type.id);
       const categoryList = await Category.getCategoryList()
       const categoryPickerIndex = categoryList.findIndex((item) => this.data.form.category_id === item.id)
+
       this.setData({
+        showForm: true,
         categoryList,
         categoryPickerIndex: categoryPickerIndex !== -1 ? categoryPickerIndex : null,
         typePickerIndex: typePickerIndex !== -1 ? typePickerIndex : null,
@@ -197,10 +219,15 @@ Component({
     },
 
     handleUploadSuccess(event) {
-      console.log(event)
       const id = event.detail.files[0].id
       this.setData({
         ['formData.cover_image_id']: id
+      })
+    },
+
+    handleHidePage() {
+      this.setData({
+        resetForm: false
       })
     }
   }
