@@ -110,7 +110,8 @@ Component({
     ],
     error: null,
     showForm: false,
-    resetForm: true
+    resetForm: true,
+    serviceTypeEnum: serviceType
   },
   // lifetimes: {
   //   attached() {

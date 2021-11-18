@@ -11,7 +11,9 @@
     "pages/conversation/conversation",
     "pages/order/order",
     "pages/order-success/order-success",
-    "pages/my-order/my-order"
+    "pages/my-order/my-order",
+    "pages/publish-success/publish-success",
+    "pages/publisher-success/publisher-success"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -66,6 +68,7 @@
     "i-image-uploader": "/components/image-uploader/image-uploader",
     "mp-msg": "weui-miniprogram/msg/msg",
     "mp-form": "weui-miniprogram/form/form",
+    "mp-cells": "weui-miniprogram/cells/cells",
     "mp-cell": "weui-miniprogram/cell/cell",
     "mp-toptips": "weui-miniprogram/toptips/toptips"
   },
