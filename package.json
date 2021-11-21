@@ -1,0 +1,27 @@
+{
+  "name": "home-econ-mp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Carlmac/HomeEcon-mp.git"
+  },
+  "author": "CJ",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Carlmac/HomeEcon-mp/issues"
+  },
+  "homepage": "https://github.com/Carlmac/HomeEcon-mp#readme",
+  "dependencies": {
+    "tim-upload-plugin": "^1.0.3",
+    "tim-wx-sdk": "^2.15.0",
+    "tim-wx-sdk-ws": "^2.12.0"
+  }
+}

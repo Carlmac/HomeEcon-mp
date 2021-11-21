@@ -1,6 +1,7 @@
 import Service from '../../model/service';
 import Category from '../../model/category';
 import {throttle} from '../../utils/utils'
+import Tim from '../../model/tim'
 
 const service = new Service();
 
@@ -13,6 +14,7 @@ Page({
     loading: true
   },
   onLoad: async function (options) {
+    new Tim();
     await this._getServiceList();
     await this._getCategoryList();
     this.setData({
