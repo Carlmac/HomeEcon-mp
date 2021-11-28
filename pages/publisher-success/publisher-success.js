@@ -1,4 +1,4 @@
-import ServiceStatus from "../../enum/ServiceStatus";
+import ServiceStatus from "../../enum/service-status";
 
 Page({
   data: {
