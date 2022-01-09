@@ -2,6 +2,8 @@ import APIConfig from '../config/api'
 import exceptionMessage from '../config/exception-message'
 import wxToPromise from './wx'
 import cache from '../enum/cache'
+import {createStoreBindings} from 'mobx-miniprogram-bindings'
+import {timStore} from '../store/tim'
 
 export default class Http {
   static async request({url, data, method = 'GET', refetch = true}) {
@@ -30,15 +32,33 @@ export default class Http {
 
     // todo 请求失败
     if (res.statusCode === 401) {
+      this.storeBindings = createStoreBindings(this, {
+        store: timStore,
+        fields: ['sdkReady'],
+        actions: {
+          timLogout: 'logout',
+        },
+      });
+
       // todo 令牌相关操作
       if (res.data.error_code === 10001) {
+        if (this.sdkReady) {
+          this.timLogout();
+        }
+
         wx.navigateTo({
           url: `pages/login/login`
-        })
+        });
+
         throw Error('请求未携带令牌');
       }
+
       if (refetch) {
         return await Http._refetch({url, data, method, refetch})
+      }
+
+      if (this.sdkReady) {
+        this.timLogout();
       }
     }
 

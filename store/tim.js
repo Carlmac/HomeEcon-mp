@@ -17,6 +17,10 @@ export const timStore = observable({
     Tim.getInstance().login();
   }),
 
+  logout: action(function () {
+    Tim.getInstance().logout();
+  }),
+
   _runListener() {
     const sdk = Tim.getInstance().getSDK();
     sdk.on(TIM.EVENT.SDK_READY, this._handleSDKReady, this);

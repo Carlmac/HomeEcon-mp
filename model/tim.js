@@ -72,6 +72,10 @@ class Tim {
     });
   }
 
+  logout() {
+    this._SDKInstance.logout();
+  }
+
   _reset() {
     this._nextReqMessageID = '';
     this.isCompleted = false;
