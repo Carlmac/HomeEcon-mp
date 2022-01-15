@@ -62,6 +62,14 @@ class Tim {
     return this._messageList;
   }
 
+  async setMessageRead(targetUserId) {
+    const res = await this._SDKInstance.setMessageRead({
+      conversationID: `C2C${targetUserId}`
+    });
+
+    return res.data;
+  }
+
   login() {
     const userInfo = User.getUserInfoByLocal();
     const textUserSig = genTestUserSig(userInfo.id.toString())
@@ -76,7 +84,7 @@ class Tim {
     this._SDKInstance.logout();
   }
 
-  _reset() {
+  reset() {
     this._nextReqMessageID = '';
     this.isCompleted = false;
     this._messageList = [];
