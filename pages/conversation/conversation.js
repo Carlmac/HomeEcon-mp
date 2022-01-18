@@ -8,8 +8,12 @@ Page({
   onLoad: function (options) {
     this.storeBindings = createStoreBindings(this, {
       store: timStore,
-      fields: ["sdkReady"],
+      fields: ["sdkReady", 'messageList'],
+      actions: ['getMessageList', 'setTargetUserId'],
     });
+
+    this.setTargetUserId('testUser');
+    this.getMessageList();
   },
 
   onUnload() {
