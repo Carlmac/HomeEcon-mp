@@ -1,7 +1,7 @@
 <view class="container">
     <view class="message-list">
         <view wx:for="{{messageList}}" wx:key="index">
-            <i-message></i-message>
+            <i-message message="{{item}}"></i-message>
         </view>
     </view>
 
