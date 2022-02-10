@@ -28,5 +28,11 @@ Page({
     wx.navigateTo({
       url: '/pages/login/login'
     })
+  },
+
+  handleSendMessage(event) {
+    const { type, content } = event.detail;
+    const message = Tim.getInstance().createMessage(type, content, this.data.targetUserId);
+    Tim.getInstance().sendMessage(message);
   }
 });

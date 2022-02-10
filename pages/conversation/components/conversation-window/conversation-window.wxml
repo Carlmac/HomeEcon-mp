@@ -20,7 +20,7 @@
                 fixed
                 hold-keyboard
                 placeholder="请输入内容"
-                bind:tap="handleInput"
+                bind:input="handleInput"
             ></textarea>
             <i-button shape="circle" size="mini" bind:tap="handleSend">发送</i-button>
         </view>
