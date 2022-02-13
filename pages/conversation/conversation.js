@@ -1,4 +1,4 @@
-// import Tim from '../../model/tim'
+import Tim from '../../model/tim'
 // import TIM from 'tim-wx-sdk'
 import {createStoreBindings} from 'mobx-miniprogram-bindings'
 import { timStore } from '../../store/tim'
@@ -14,8 +14,11 @@ Page({
       fields: ['sdkReady']
     });
 
+    // const targetUserId = options.targetUserId;
+    const targetUserId = 'testUser';
+
     this.setData({
-      targetUserId: options.targetUserId,
+      targetUserId,
       service: options.service
     })
   },
@@ -33,6 +36,7 @@ Page({
   handleSendMessage(event) {
     const { type, content } = event.detail;
     const message = Tim.getInstance().createMessage(type, content, this.data.targetUserId);
+    console.log(11111, message)
     Tim.getInstance().sendMessage(message);
   }
 });

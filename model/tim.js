@@ -107,8 +107,8 @@ class Tim {
     return message;
   }
 
-  async sendMessage() {
-    this._SDKInstance.sendMessage();
+  async sendMessage(message) {
+    this._SDKInstance.sendMessage(message);
   }
 
   login() {

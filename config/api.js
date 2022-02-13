@@ -1,6 +1,6 @@
 const APIConfig = {
   baseUrl: 'https://qinchenju.com/homemaking/',
-  iCode: '2A73E43666C738EF',
+  iCode: '6B145B92DD2E8936',
   orderNo: '2105271458166049'
 }
 

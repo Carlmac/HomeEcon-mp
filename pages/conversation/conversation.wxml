@@ -3,6 +3,7 @@
         targetUserId="{{targetUserId}}"
         service="{{service}}"
         bind:sendmessage="handleSendMessage"
+        bind:sendimage="handleSendMessage"
     ></i-conversation-window>
 </view>
 <view wx:else>
