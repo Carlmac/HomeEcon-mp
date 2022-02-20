@@ -1,12 +1,21 @@
 <view class="container">
-    <view class="message-list">
-        <view wx:for="{{messageList}}" wx:key="index">
-            <i-message message="{{item}}"
+    <scroll-view
+        class="message-list"
+        scroll-y
+        show-scrollbar="{{false}}"
+        style="height: {{scrollHeight}}px"
+        enhanced
+        bindscrolltoupper="hadnleScrolltoupper"
+        scroll-into-view="message-{{intoView}}"
+    >
+        <view wx:for="{{messageList}}" wx:key="index" id="message-{{index}}">
+            <i-message
+                message="{{item}}"
                 bind:send="handleSendLink"
                 bind:select="handleSelect"
             ></i-message>
         </view>
-    </view>
+    </scroll-view>
 
     <view class="action-bar">
         <view class="inner-container">

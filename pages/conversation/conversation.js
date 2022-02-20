@@ -11,7 +11,8 @@ Page({
   onLoad: function (options) {
     this.storeBindings = createStoreBindings(this, {
       store: timStore,
-      fields: ['sdkReady']
+      fields: ['sdkReady'],
+      actions: ['pushMessage']
     });
 
     // const targetUserId = options.targetUserId;
@@ -36,7 +37,8 @@ Page({
   handleSendMessage(event) {
     const { type, content } = event.detail;
     const message = Tim.getInstance().createMessage(type, content, this.data.targetUserId);
-    console.log(11111, message)
+    // console.log(11111, message)
+    this.pushMessage(message);
     Tim.getInstance().sendMessage(message);
   }
 });
