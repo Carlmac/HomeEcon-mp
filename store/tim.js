@@ -8,6 +8,7 @@ export const timStore = observable({
   messageList: [],
   _targetUserId: null,
   intoView: 0,
+  isCompleted: false,
 
   // actions
   login: action(function () {
@@ -22,6 +23,13 @@ export const timStore = observable({
   pushMessage: action(function (message) {
     this.messageList = this.messageList.concat([message]);
     this.intoView = this.messageList.length - 1;
+  }),
+
+  scrollMessageList: action(async function () {
+    const messageList = await Tim.getInstance().getMessageList(this._targetUserId)
+    this.intoView = messageList.length - 2;
+    this.isCompleted = Tim.getInstance().isCompleted;
+    this.messageList = messageList.concat(this.messageList.slice())
   }),
 
   _runListener() {

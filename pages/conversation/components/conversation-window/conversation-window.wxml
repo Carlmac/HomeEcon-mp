@@ -5,7 +5,7 @@
         show-scrollbar="{{false}}"
         style="height: {{scrollHeight}}px"
         enhanced
-        bindscrolltoupper="hadnleScrolltoupper"
+        bind:scrolltoupper="handleScrolltoupper"
         scroll-into-view="message-{{intoView}}"
     >
         <view wx:for="{{messageList}}" wx:key="index" id="message-{{index}}">
