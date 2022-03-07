@@ -1,6 +1,7 @@
 import {observable, action} from "mobx-miniprogram";
 import Tim from '../model/tim'
 import TIM from 'tim-wx-sdk'
+import User from '../model/user'
 
 export const timStore = observable({
   // 数据字段
@@ -73,6 +74,8 @@ export const timStore = observable({
 
   _handleSDKReady() {
     this.sdkReady = true;
+    const userInfo = User.getUserInfoByLocal();
+    Tim.getInstance().updateUserProfile(userInfo);
   },
 
   _handleSDKNotReady() {

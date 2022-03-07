@@ -15,6 +15,7 @@ Page({
       actions: ['pushMessage']
     });
 
+    // TODO 测试完放开
     // const targetUserId = options.targetUserId;
     const targetUserId = 'testUser';
 

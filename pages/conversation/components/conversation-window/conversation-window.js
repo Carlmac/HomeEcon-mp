@@ -2,6 +2,7 @@ import {storeBindingsBehavior} from 'mobx-miniprogram-bindings'
 import {timStore} from '../../../../store/tim'
 import {getEventParam} from '../../../../utils/utils'
 import TIM from 'tim-wx-sdk'
+import Tim from '../../../../model/tim'
 
 Component({
   behaviors: [storeBindingsBehavior],
@@ -19,6 +20,7 @@ Component({
   },
   lifetimes: {
     attached() {
+      this._setNavigationBarTitle();
       this._setScrollHeight();
       // TODO 测试完放开
       // this.setTargetUserId(this.data.targetUserId);
@@ -27,6 +29,11 @@ Component({
     }
   },
   methods: {
+    async _setNavigationBarTitle() {
+      const res = await Tim.getInstance().getUserProfile(this.data.targetUserId)
+      wx.setNavigationBarTitle({ title: res[0].nick || '木木到家' })
+    },
+
     handleSendLink(event) {
       const service = getEventParam(event, 'service');
       this.triggerEvent('sendmessage', {

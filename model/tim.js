@@ -125,6 +125,21 @@ class Tim {
     this._SDKInstance.logout();
   }
 
+  async getUserProfile(targetUserId) {
+    const res = await this._SDKInstance.getUserProfile({
+      userIdList: [targetUserId]
+    });
+    return res.data;
+  }
+
+  async updateUserProfile(userInfo) {
+    await this._SDKInstance.updateMyProfile({
+      nick: userInfo.nickname,
+      avatar: userInfo.avatar,
+      gender: userInfo.gender === 1 ? TIM.TYPES.GENDER_MALE : TIM.TYPES.GENDER_FEMALE
+    })
+  }
+
   reset() {
     this._nextReqMessageID = '';
     this.isCompleted = false;
