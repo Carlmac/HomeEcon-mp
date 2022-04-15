@@ -15,13 +15,12 @@ Page({
       actions: ['pushMessage']
     });
 
-    // TODO 测试完放开
-    // const targetUserId = options.targetUserId;
-    const targetUserId = 'testUser';
+    const targetUserId = options.targetUserId;
+    // const targetUserId = 'testUser';
 
     this.setData({
       targetUserId,
-      service: options.service
+      service: options.service ? JSON.parse(options.service) : null
     })
   },
 

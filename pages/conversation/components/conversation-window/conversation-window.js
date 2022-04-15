@@ -16,22 +16,25 @@ Component({
   storeBindings: {
     store: timStore,
     fields: ['messageList', 'intoView', 'isCompleted'],
-    actions: ['getMessageList', 'setTargetUserId', 'scrollMessageList']
+    actions: ['getMessageList', 'setTargetUserId', 'scrollMessageList', 'pushMessage']
   },
   lifetimes: {
-    attached() {
+    async attached() {
       this._setNavigationBarTitle();
       this._setScrollHeight();
-      // TODO 测试完放开
-      // this.setTargetUserId(this.data.targetUserId);
-      this.setTargetUserId('testUser');
-      this.getMessageList();
+      this.setTargetUserId(this.data.targetUserId);
+      // this.setTargetUserId('testUser');
+      await this.getMessageList();
+      if (this.data.service) {
+        const message = Tim.getInstance().createMessage(TIM.TYPES.MSG_CUSTOM, this.data.service, this.data.targetUserId, 'link');
+        this.pushMessage(message);
+      }
     }
   },
   methods: {
     async _setNavigationBarTitle() {
       const res = await Tim.getInstance().getUserProfile(this.data.targetUserId)
-      wx.setNavigationBarTitle({ title: res[0].nick || '木木到家' })
+      wx.setNavigationBarTitle({title: res[0].nick || '木木到家'})
     },
 
     handleSendLink(event) {

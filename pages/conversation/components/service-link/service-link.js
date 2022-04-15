@@ -1,7 +1,8 @@
 Component({
   properties: {
     flow: String,
-    service: Object
+    service: String,
+    extension: String,
   },
   lifetimes: {
     attached() {
