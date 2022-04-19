@@ -10,6 +10,7 @@ export const timStore = observable({
   _targetUserId: null,
   intoView: 0,
   isCompleted: false,
+  conversationList: [],
 
   // actions
   login: action(function () {
@@ -33,12 +34,18 @@ export const timStore = observable({
     this.messageList = messageList.concat(this.messageList.slice())
   }),
 
+  getConversationList: action(async function () {
+    const conversationList = await Tim.getInstance().getConversationList();
+    return conversationList;
+  }),
+
   _runListener() {
     const sdk = Tim.getInstance().getSDK();
     sdk.on(TIM.EVENT.SDK_READY, this._handleSDKReady, this);
     sdk.on(TIM.EVENT.SDK_NOT_READY, this._handleSDKNotReady, this)
     sdk.on(TIM.EVENT.KICKED_OUT, this._handleSDKNotReady, this)
     sdk.on(TIM.EVENT.MESSAGE_RECEIVED, this._handleMessageReceived, this)
+    sdk.on(TIM.EVENT.CONVERSATION_LIST_UPDATED, this._handleConversationListUpdate, this)
   },
 
   getMessageList: action(async function() {
@@ -52,8 +59,6 @@ export const timStore = observable({
   }),
 
   async _handleMessageReceived(event) {
-    // console.log(event.data)
-
     if (!this._targetUserId) {
       return
     }
@@ -66,6 +71,14 @@ export const timStore = observable({
       this.intoView = this.messageList.length - 1;
       await Tim.getInstance().setMessageRead(this._targetUserId);
     }
+  },
+
+  async _handleConversationListUpdate(event) {
+    if (!event.data.length) {
+      return
+    }
+
+    this.conversationList = event.data;
   },
 
   setTargetUserId: action(function (targetUserId) {

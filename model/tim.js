@@ -44,6 +44,11 @@ class Tim {
     return this._SDKInstance;
   }
 
+  async getConversationList() {
+    const res = await this._SDKInstance.getConversationList();
+    return res.data.conversationList;
+  }
+
   async getMessageList(targetUserId, count = 10) {
     if (this.isCompleted) {
       return this._messageList;

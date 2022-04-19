@@ -1,1 +1,18 @@
-<view>消息</view>
+<view class="container">
+    <block wx:if="{{sdkReady}}">
+        <block wx:if="{{!conversationList.length}}">
+            <i-show-status show content="暂无会话"></i-show-status>
+        </block>
+        <block wx:else>
+            <i-conversation-preview
+              wx:for="{{conversationList}}"
+              wx:index="index"
+            ></i-conversation-preview>
+        </block>
+    </block>
+    <block wx:else>
+        <i-show-status show content="会话列表加载失败">
+            <i-button shape="semicircle" fontColor="#333333" bind:tap="handleToLogin">点击刷新</i-button>
+        </i-show-status>
+    </block>
+</view>
