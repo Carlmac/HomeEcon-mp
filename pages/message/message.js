@@ -1,6 +1,7 @@
 // pages/message/message.js
 import {createStoreBindings} from 'mobx-miniprogram-bindings'
 import {timStore} from '../../store/tim'
+import {getDataSet} from '../../utils/utils'
 
 Page({
 
@@ -23,23 +24,9 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
 
   },
 
@@ -50,24 +37,16 @@ Page({
     this.storeBindings.destroyStoreBindings();
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  handleSelect(event) {
+    const item = getDataSet(event, 'item')
+    wx.navigateTo({
+      url: `/pages/conversation/conversation?targetUserId=${item.userProfile.userID}}&service=`
+    })
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
+  handleToLogin() {
+    wx.navigateTo({
+      url: '/pages/login/login',
+    })
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

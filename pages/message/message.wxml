@@ -6,7 +6,12 @@
         <block wx:else>
             <i-conversation-preview
               wx:for="{{conversationList}}"
-              wx:index="index"
+              wx:key="index"
+              user="{{item.userProfile}}"
+              lastMessage="{{item.lastMessage}}"
+              unreadCount="{{item.unreadCount}}"
+              data-item="{{item}}"
+              bind:tap="handleSelect"
             ></i-conversation-preview>
         </block>
     </block>
