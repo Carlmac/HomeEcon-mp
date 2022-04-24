@@ -66,6 +66,7 @@
     "i-safe-area": "/components/safe-area/safe-area",
     "i-button": "/components/button/button",
     "i-image-uploader": "/components/image-uploader/image-uploader",
+    "i-badge": "/components/badge/badge",
     "mp-msg": "weui-miniprogram/msg/msg",
     "mp-form": "weui-miniprogram/form/form",
     "mp-cells": "weui-miniprogram/cells/cells",

@@ -1,6 +1,8 @@
 <view class="container">
     <view class="left">
-        <image class="avatar" src="{{user.avatar}}"></image>
+        <i-badge show="{{unreadCount}}" count="{{unreadCount}}">
+            <image class="avatar" src="{{user.avatar}}"></image>
+        </i-badge>
     </view>
     <view class="right">
         <view class="right-top">
