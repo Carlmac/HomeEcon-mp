@@ -2,6 +2,7 @@ import {observable, action} from "mobx-miniprogram";
 import Tim from '../model/tim'
 import TIM from 'tim-wx-sdk'
 import User from '../model/user'
+import {setTabBarBadge} from '../utils/wx'
 
 export const timStore = observable({
   // 数据字段
@@ -79,6 +80,8 @@ export const timStore = observable({
     }
 
     this.conversationList = event.data;
+    const unreadCount = event.data.reduce((sum, item) => sum + item.unreadCount, 0)
+    setTabBarBadge(unreadCount)
   },
 
   setTargetUserId: action(function (targetUserId) {

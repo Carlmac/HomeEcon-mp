@@ -7,3 +7,18 @@ export default function wxToPromise(method, options = {}) {
     wx[method](options);
   })
 }
+
+const setTabBarBadge = function (unreadCount) {
+  if (unreadCount > 0) {
+    wx.setTabBarBadge({
+      index: 2,
+      text: unreadCount + ''
+    })
+  } else {
+    wx.removeTabBarBadge({
+      index: 2
+    })
+  }
+};
+
+export {setTabBarBadge}
