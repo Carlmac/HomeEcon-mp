@@ -1,7 +1,7 @@
 import Tim from '../../model/tim'
 // import TIM from 'tim-wx-sdk'
 import {createStoreBindings} from 'mobx-miniprogram-bindings'
-import { timStore } from '../../store/tim'
+import {timStore} from '../../store/tim'
 
 Page({
   data: {
@@ -39,7 +39,7 @@ Page({
   },
 
   handleSendMessage(event) {
-    const { type, content } = event.detail;
+    const {type, content} = event.detail;
     const message = Tim.getInstance().createMessage(type, content, this.data.targetUserId);
     this.pushMessage(message);
     Tim.getInstance().sendMessage(message);
