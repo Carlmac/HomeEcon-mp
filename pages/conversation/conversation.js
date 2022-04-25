@@ -6,13 +6,14 @@ import { timStore } from '../../store/tim'
 Page({
   data: {
     targetUserId: null,
-    service: null
+    service: null,
+    isSent: false,
   },
   onLoad: function (options) {
     this.storeBindings = createStoreBindings(this, {
       store: timStore,
       fields: ['sdkReady'],
-      actions: ['pushMessage']
+      actions: ['pushMessage', 'getConversationList']
     });
 
     const targetUserId = options.targetUserId;
@@ -25,6 +26,9 @@ Page({
   },
 
   onUnload() {
+    if (!this.data.isSent) {
+      this.getConversationList()
+    }
     this.storeBindings.destroyStoreBindings();
   },
 
@@ -37,8 +41,9 @@ Page({
   handleSendMessage(event) {
     const { type, content } = event.detail;
     const message = Tim.getInstance().createMessage(type, content, this.data.targetUserId);
-    // console.log(11111, message)
     this.pushMessage(message);
     Tim.getInstance().sendMessage(message);
+    this.data.isSent = true;
+    // this.getOpenerEventChannel().emit('sendMessage')
   }
 });

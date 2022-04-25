@@ -2,6 +2,8 @@
 import {createStoreBindings} from 'mobx-miniprogram-bindings'
 import {timStore} from '../../store/tim'
 import {getDataSet} from '../../utils/utils'
+import cache from '../../enum/cache'
+import {setTabBarBadge} from '../../utils/wx'
 
 Page({
 
@@ -9,7 +11,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    conversationList: []
+    conversationList: [],
+    // updateConversationList: false,
   },
 
   /**
@@ -19,7 +22,7 @@ Page({
     this.storeBindings = createStoreBindings(this, {
       store: timStore,
       fields: ['sdkReady', 'conversationList'],
-      actions: ['getConversationList']
+      // actions: ['getConversationList']
     })
   },
 
@@ -27,7 +30,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getConversationList()
+    // if (this.data.updateConversationList) {
+    //   this.getConversationList()
+    //   this.data.updateConversationList = false;
+    // }
+
+    const unreadCount = wx.getStorageSync(cache.UNREAD_COUNT)
+    setTabBarBadge(unreadCount)
   },
 
   /**
@@ -38,9 +47,15 @@ Page({
   },
 
   handleSelect(event) {
+    // this.data.updateConversationList = true;
     const item = getDataSet(event, 'item')
     wx.navigateTo({
-      url: `/pages/conversation/conversation?targetUserId=${item.userProfile.userID}}&service=`
+      url: `/pages/conversation/conversation?targetUserId=${item.userProfile.userID}}&service=`,
+      // events: {
+      //   sendMessage: () => {
+      //     this.data.updateConversationList = false;
+      //   }
+      // }
     })
   },
 
