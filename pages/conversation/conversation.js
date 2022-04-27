@@ -13,7 +13,7 @@ Page({
     this.storeBindings = createStoreBindings(this, {
       store: timStore,
       fields: ['sdkReady'],
-      actions: ['pushMessage', 'getConversationList']
+      actions: ['pushMessage', 'resetMessage', 'getConversationList']
     });
 
     const targetUserId = options.targetUserId;
@@ -29,6 +29,7 @@ Page({
     if (!this.data.isSent) {
       this.getConversationList()
     }
+    this.resetMessage();
     this.storeBindings.destroyStoreBindings();
   },
 

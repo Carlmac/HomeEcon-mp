@@ -16,7 +16,7 @@
         </block>
     </block>
     <block wx:else>
-        <i-show-status show content="会话列表加载失败">
+        <i-show-status show top="500" content="会话列表加载失败">
             <i-button shape="semicircle" fontColor="#333333" bind:tap="handleToLogin">点击刷新</i-button>
         </i-show-status>
     </block>

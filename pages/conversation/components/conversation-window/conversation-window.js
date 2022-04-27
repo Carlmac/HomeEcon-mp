@@ -12,7 +12,8 @@ Component({
     service: Object
   },
   data: {
-    text: ''
+    text: '',
+    scrollHeight: 0,
   },
   storeBindings: {
     store: timStore,

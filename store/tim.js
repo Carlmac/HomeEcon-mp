@@ -23,6 +23,13 @@ export const timStore = observable({
     Tim.getInstance().logout();
   }),
 
+  resetMessage: action(function () {
+    this.messageList = [];
+    this._targetUserId = null;
+    this.intoView = 0;
+    this.isCompleted = false;
+  }),
+
   pushMessage: action(function (message) {
     this.messageList = this.messageList.concat([message]);
     this.intoView = this.messageList.length - 1;
