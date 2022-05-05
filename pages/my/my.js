@@ -1,6 +1,7 @@
-// pages/my/my.js
 import cache from '../../enum/cache'
 import {setTabBarBadge} from '../../utils/wx'
+import Token from '../../model/token'
+import User from '../../model/user'
 
 Page({
 
@@ -8,64 +9,33 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    userInfo: {
+      nickname: '点击授权登录',
+      avatar: '../../images/logo.png'
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
 
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-
-  onShow() {
+  async onShow() {
     const unreadCount = wx.getStorageSync(cache.UNREAD_COUNT)
     setTabBarBadge(unreadCount)
+
+    const verifyToken = await Token.verifyToken()
+
+    if (verifyToken.valid) {
+      const userInfo = User.getUserInfoByLocal()
+      this.setData({
+        userInfo
+      })
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  handleToLogin() {
+    wx.navigateTo({
+      url: '/pages/login/login'
+    })
   }
 })

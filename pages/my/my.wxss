@@ -1,1 +1,10 @@
-/* pages/my/my.wxss */
+.container {
+
+}
+
+.header {
+    box-sizing: border-box;
+    height: 240rpx;
+    background-color: #f3d066;
+    padding: 30rpx;
+}
