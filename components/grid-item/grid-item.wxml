@@ -1,6 +1,6 @@
 <view class="container">
     <i-badge show="{{showBadge}}" count="{{badgeCount}}">
-        <i-icon wx:if="{{icon}}" name="{{icon}}" size="{{iconSize}}"></i-icon>
+        <i-icon wx:if="{{icon}}" color="#333333" name="{{icon}}" size="{{iconSize}}"></i-icon>
         <view>{{text}}</view>
     </i-badge>
 </view>

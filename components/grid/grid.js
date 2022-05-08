@@ -1,4 +1,12 @@
 Component({
+  options: {
+    multipleSlots: true
+  },
+  relations: {
+    '../grid-item/grid-item': {
+      type: 'child',
+    }
+  },
   properties: {
     rowNum: {
       type: Number,
@@ -8,5 +16,18 @@ Component({
     extend: String,
   },
   data: {},
-  methods: {}
+  lifetimes: {},
+  methods: {
+    getGridItems() {
+      const items = this.getRelationNodes('../grid-item/grid-item');
+      const gridItems = items.map((item, index) => {
+        return {
+          index,
+        }
+      });
+      this.setData({
+        gridItems,
+      })
+    }
+  }
 });

@@ -1,7 +1,15 @@
 Component({
+  relations: {
+    '../grid/grid': {
+      type: 'parent',
+    }
+  },
   properties: {
     icon: String,
-    iconSize: String,
+    iconSize: {
+      type: String,
+      value: '50'
+    },
     text: String,
     showBadge: Boolean,
     badgeCount: Number,

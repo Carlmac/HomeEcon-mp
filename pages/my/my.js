@@ -2,6 +2,7 @@ import cache from '../../enum/cache'
 import {setTabBarBadge} from '../../utils/wx'
 import Token from '../../model/token'
 import User from '../../model/user'
+import { appointWithMeGrid, myAppointGrid, myProvideGird, mySeekGrid } from "../../config/grid";
 
 Page({
 
@@ -12,7 +13,16 @@ Page({
     userInfo: {
       nickname: '点击授权登录',
       avatar: '../../images/logo.png'
-    }
+    },
+    // 宫格配置
+    // 预约我的宫格
+    appointWithMeGrid: appointWithMeGrid,
+    // 我的预约宫格
+    myAppointGrid: myAppointGrid,
+    // 我在提供宫格
+    myProvideGird: myProvideGird,
+    // 正在找宫格
+    mySeekGrid: mySeekGrid,
   },
 
   onLoad: function (options) {

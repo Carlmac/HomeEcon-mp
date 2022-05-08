@@ -7,7 +7,7 @@
             {{extend}}
         </view>
     </view>
-    <view>
-        <slot></slot>
+    <view wx:for="{{gridItems}}" wx:key="index" style="width: {{100/rowNum}}%">
+        <slot name="{{index}}"></slot>
     </view>
 </view>
