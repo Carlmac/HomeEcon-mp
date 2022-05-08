@@ -11,6 +11,12 @@ class Order {
       method: 'POST'
     })
   }
+
+  static getOrderStatus(role) {
+    return Http.request({
+      url: `v1/order/count?role=${role}`,
+    })
+  }
 }
 
 export default Order;

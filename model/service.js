@@ -1,4 +1,4 @@
- import Http from '../utils/http';
+import Http from '../utils/http';
 import Base from './base';
 
 class Service extends Base {
@@ -48,6 +48,12 @@ class Service extends Base {
       url: `/v1/service/${serviceId}`,
       data: formData,
       method: 'PUT'
+    })
+  }
+
+  static getServiceStatus(type) {
+    return Http.request({
+      url: `/v1/service/count?type=${type}`
     })
   }
 }
