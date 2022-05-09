@@ -7,7 +7,12 @@
             {{extend}}
         </view>
     </view>
-    <view wx:for="{{gridItems}}" wx:key="index" style="width: {{100/rowNum}}%">
+    <view
+        wx:for="{{gridItems}}"
+        wx:key="index"
+        style="width: {{100/rowNum}}%"
+        bind:select="handleSelect"
+    >
         <slot name="{{index}}"></slot>
     </view>
 </view>

@@ -2,11 +2,12 @@ import cache from '../../enum/cache'
 import {setTabBarBadge} from '../../utils/wx'
 import Token from '../../model/token'
 import User from '../../model/user'
-import { appointWithMeGrid, myAppointGrid, myProvideGird, mySeekGrid } from "../../config/grid";
+import {appointWithMeGrid, myAppointGrid, myProvideGird, mySeekGrid} from "../../config/grid";
 import Order from '../../model/order'
 import roleType from '../../enum/role-type'
 import serviceType from '../../enum/service-type'
 import Service from '../../model/service'
+import {getEventParam} from "../../utils/utils";
 
 Page({
 
@@ -69,6 +70,29 @@ Page({
     this.setData({
       provideServiceStatus: await provideServiceStatus,
       seekServiceStatus: await seekServiceStatus,
+    })
+  },
+
+  handleNavToOrder(event) {
+    const cell = getEventParam(event, 'cell')
+
+    if (!('status' in cell)) {
+      wx.navigateTo({
+        url: `/pages/refund-list/refund-list?role=${cell.role}`
+      });
+      return
+    }
+
+    wx.navigateTo({
+      url: `/pages/my-order/my-order?role=${cell.role}&status=${cell.status}`
+    })
+  },
+
+  handleNavToMyService(event) {
+    const {type, status} = getEventParam(event, 'cell')
+
+    wx.navigateTo({
+      url: `/pages/my-service/my-service?type=${type}&status=${status}`
     })
   },
 

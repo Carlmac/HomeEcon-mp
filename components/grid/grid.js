@@ -1,3 +1,5 @@
+import {getEventParam} from "../../utils/utils";
+
 Component({
   options: {
     multipleSlots: true
@@ -14,6 +16,7 @@ Component({
     },
     title: String,
     extend: String,
+    extendCell: Object
   },
   data: {},
   lifetimes: {},
@@ -28,6 +31,17 @@ Component({
       this.setData({
         gridItems,
       })
-    }
+    },
+
+    handleSelect(event) {
+      const cell = getEventParam(event, 'cell');
+      this.triggerEvent('itemtap', {cell})
+    },
+
+    handleExtend() {
+      this.triggerEvent('extendtap', {
+        cell: this.data.extendCell
+      })
+    },
   }
 });

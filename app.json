@@ -13,7 +13,9 @@
     "pages/order-success/order-success",
     "pages/my-order/my-order",
     "pages/publish-success/publish-success",
-    "pages/publisher-success/publisher-success"
+    "pages/publisher-success/publisher-success",
+    "pages/refund-list/refund-list",
+    "pages/my-service/my-service"
   ],
   "window": {
     "backgroundTextStyle": "dark",

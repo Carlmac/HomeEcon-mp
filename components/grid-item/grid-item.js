@@ -13,7 +13,15 @@ Component({
     text: String,
     showBadge: Boolean,
     badgeCount: Number,
+    cell: Object,
   },
   data: {},
-  methods: {}
+  methods: {
+    handleSelect() {
+      this.triggerEvent('select',
+        {cell: this.data.cell},
+      {bubbles: true, composed: true}
+      )
+    }
+  }
 });
